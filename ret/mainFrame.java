@@ -6,17 +6,22 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.*;
+import javax.swing.text.*;
+
+import java.text.*;
 
 public class mainFrame extends JFrame {
 
-//    private JTextArea textArea;
-//    private JButton btn;
     private JLabel labelTask;
     private JLabel labelDescription;
     private JLabel labelPercent;
     private JLabel labelHours;
-    private JLabel oHour;
+    private JFormattedTextField oHour;
     private static int row_height = 20;
+    
+    private int numHours = 0;
+    private NumberFormat hourFormat;
+    private JFormattedTextField hourField;
 
     public mainFrame() {
         super("Relative Estimation Tool");
@@ -83,7 +88,9 @@ public class mainFrame extends JFrame {
             gbc.gridx = i;
             gbc.gridy = 1;
             gbc.fill = GridBagConstraints.NONE;
-            oHour = new JLabel("200");
+            oHour = new JFormattedTextField(hourFormat);
+            oHour.setValue(new Integer(numHours));
+            oHour.setColumns(10);
             oHour.setBackground(Color.GREEN);
             oHour.setPreferredSize(new Dimension(100, row_height));
             oHour.setOpaque(true);
