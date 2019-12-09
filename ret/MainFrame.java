@@ -10,7 +10,7 @@ import javax.swing.text.*;
 
 import java.text.*;
 
-public class mainFrame extends JFrame {
+public class MainFrame extends JFrame {
 
     private JLabel labelTask;
     private JLabel labelDescription;
@@ -23,7 +23,7 @@ public class mainFrame extends JFrame {
     private NumberFormat hourFormat;
     private JFormattedTextField hourField;
 
-    public mainFrame() {
+    public MainFrame() {
         super("Relative Estimation Tool");
 
         setLayout(new GridBagLayout());
@@ -36,6 +36,13 @@ public class mainFrame extends JFrame {
     }
 
     private void paint_header() {
+        paint_task();
+        paint_description();
+        paint_percent();
+        paint_hours(); 
+    }
+
+    private void paint_task() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
@@ -48,6 +55,11 @@ public class mainFrame extends JFrame {
         gbc.gridy = 0;
         gbc.fill = GridBagConstraints.VERTICAL;
         add(labelTask, gbc);
+    }
+
+    private void paint_description() {
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
         labelDescription = new JLabel("Description");
         labelDescription.setBackground(Color.RED);
@@ -58,6 +70,11 @@ public class mainFrame extends JFrame {
         gbc.gridy = 0;
         gbc.fill = GridBagConstraints.VERTICAL;
         add(labelDescription, gbc);
+    }
+
+    private void paint_percent() {
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
         labelPercent = new JLabel("Percent");
         labelPercent.setBackground(Color.YELLOW);
@@ -69,6 +86,11 @@ public class mainFrame extends JFrame {
         gbc.gridy = 0;
         gbc.fill = GridBagConstraints.VERTICAL;
         add(labelPercent, gbc);
+    }
+
+    private void paint_hours() {
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
         labelHours = new JLabel("Hours");
         labelHours.setBackground(Color.GRAY);
