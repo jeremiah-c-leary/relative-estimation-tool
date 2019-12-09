@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.*;
 
 import java.text.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -18,15 +19,18 @@ public class MainFrame extends JFrame {
     private JLabel labelHours;
     private JFormattedTextField hourCell;
     private static int row_height = 20;
-    
-    private int numHours = 0;
+
+    ArrayList<Integer> numHours = new ArrayList<Integer>();
     private NumberFormat hourFormat;
     private JFormattedTextField hourField;
 
     public MainFrame() {
         super("Relative Estimation Tool");
-
         setLayout(new GridBagLayout());
+
+        numHours.add(0);
+        numHours.add(0);
+        numHours.add(0);
 
         paintHeader();
 
@@ -104,14 +108,14 @@ public class MainFrame extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         add(labelHours, gbc);
 
-        for(int i=3;i<6;i++) {
+        for(int i=0;i<3;i++) {
             gbc.gridheight = 1;
             gbc.gridwidth = 1;
-            gbc.gridx = i;
+            gbc.gridx = i + 3;
             gbc.gridy = 1;
             gbc.fill = GridBagConstraints.NONE;
             hourCell = new JFormattedTextField(hourFormat);
-            hourCell.setValue(Integer.valueOf(numHours));
+            hourCell.setValue(numHours.get(i));
             hourCell.setColumns(10);
             hourCell.setBackground(Color.GREEN);
             hourCell.setPreferredSize(new Dimension(100, row_height));
