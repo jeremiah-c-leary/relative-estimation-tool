@@ -1,14 +1,14 @@
 
-import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import java.awt.event.*;
+import java.awt.GridBagLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-
-import javax.swing.*;
-import javax.swing.text.*;
+import java.awt.event.*;
 
 import java.text.*;
+
+import javax.swing.*;
+
 
 public class MainFrame extends JFrame {
 
@@ -28,21 +28,21 @@ public class MainFrame extends JFrame {
 
         setLayout(new GridBagLayout());
 
-        paint_header();
+        paintHeader();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         pack();
     }
 
-    private void paint_header() {
-        paint_task();
-        paint_description();
-        paint_percent();
-        paint_hours(); 
+    private void paintHeader() {
+        paintTask();
+        paintDescription();
+        paintPercent();
+        paintHours(); 
     }
 
-    private void paint_task() {
+    private void paintTask() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
@@ -57,7 +57,7 @@ public class MainFrame extends JFrame {
         add(labelTask, gbc);
     }
 
-    private void paint_description() {
+    private void paintDescription() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
@@ -72,7 +72,7 @@ public class MainFrame extends JFrame {
         add(labelDescription, gbc);
     }
 
-    private void paint_percent() {
+    private void paintPercent() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
@@ -88,7 +88,7 @@ public class MainFrame extends JFrame {
         add(labelPercent, gbc);
     }
 
-    private void paint_hours() {
+    private void paintHours() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
