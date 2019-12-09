@@ -1,8 +1,8 @@
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.*;
 
 import java.text.*;
@@ -16,7 +16,7 @@ public class MainFrame extends JFrame {
     private JLabel labelDescription;
     private JLabel labelPercent;
     private JLabel labelHours;
-    private JFormattedTextField oHour;
+    private JFormattedTextField hourCell;
     private static int row_height = 20;
     
     private int numHours = 0;
@@ -110,14 +110,14 @@ public class MainFrame extends JFrame {
             gbc.gridx = i;
             gbc.gridy = 1;
             gbc.fill = GridBagConstraints.NONE;
-            oHour = new JFormattedTextField(hourFormat);
-            oHour.setValue(new Integer(numHours));
-            oHour.setColumns(10);
-            oHour.setBackground(Color.GREEN);
-            oHour.setPreferredSize(new Dimension(100, row_height));
-            oHour.setOpaque(true);
-            oHour.setHorizontalAlignment(JLabel.CENTER);
-            add(oHour, gbc);
+            hourCell = new JFormattedTextField(hourFormat);
+            hourCell.setValue(Integer.valueOf(numHours));
+            hourCell.setColumns(10);
+            hourCell.setBackground(Color.GREEN);
+            hourCell.setPreferredSize(new Dimension(100, row_height));
+            hourCell.setOpaque(true);
+            hourCell.setHorizontalAlignment(JLabel.CENTER);
+            add(hourCell, gbc);
         }
     }
 }
