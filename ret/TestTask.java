@@ -215,6 +215,30 @@ public class TestTask {
         assertEquals(new ArrayList<Task>(), myTask.getSubtasks());
     }
 
+    @Test
+    public void testTaskAddSubtaskMethod() {
+        Task topTask = new Task();
+        topTask.setName("Top Task");
+        Task subTask1 = new Task();
+        subTask1.setName("SubTask 1");
+        Task subTask2 = new Task();
+        subTask2.setName("SubTask 2");
+        Task subTask3 = new Task();
+        subTask3.setName("SubTask 3");
+
+        topTask.addSubtask(subTask1);
+        topTask.addSubtask(subTask2);
+        topTask.addSubtask(subTask3);
+
+        ArrayList<Task> expectedTasks = new ArrayList<Task>();
+        expectedTasks.add(subTask1);
+        expectedTasks.add(subTask2);
+        expectedTasks.add(subTask3);
+
+        assertEquals(expectedTasks, topTask.getSubtasks());
+
+    }
+
     public static void main(String args[]) {
         org.junit.runner.JUnitCore.main("TestTask");
     }

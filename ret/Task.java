@@ -76,6 +76,10 @@ public class Task {
       this.calculatedHours = myTemp;
   }
 
+  public void addSubtask(Task input) {
+      this.subtasks.add(input);
+  }
+
   public ArrayList<Task> getSubtasks() {
       return new ArrayList<Task>(this.subtasks);
   }
