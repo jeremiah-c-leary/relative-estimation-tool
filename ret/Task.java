@@ -40,6 +40,7 @@ public class Task {
 
   public void setPercent(Integer input) {
       this.percent = input;
+      this.updateCalculatedHours();
   }
 
   public Integer getLevel() {
