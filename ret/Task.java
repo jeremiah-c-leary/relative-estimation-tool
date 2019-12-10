@@ -83,4 +83,13 @@ public class Task {
   public ArrayList<Task> getSubtasks() {
       return new ArrayList<Task>(this.subtasks);
   }
+
+  public ArrayList<Task> getRecursiveSubtasks() {
+      ArrayList<Task> myReturn = new ArrayList<Task>();
+      myReturn.add(this);
+      for (Task mySubtask : this.subtasks) {
+          myReturn.addAll(mySubtask.getRecursiveSubtasks());
+      }
+      return myReturn;
+  }
 }

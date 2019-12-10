@@ -236,7 +236,82 @@ public class TestTask {
         expectedTasks.add(subTask3);
 
         assertEquals(expectedTasks, topTask.getSubtasks());
+    }
 
+    @Test
+    public void testTaskgetRecursiveSubtasksMethod() {
+        Task topTask = new Task();
+        topTask.setName("Top Task");
+        Task subTask1 = new Task();
+        subTask1.setName("SubTask 1");
+        Task subTask2 = new Task();
+        subTask2.setName("SubTask 2");
+        Task subTask3 = new Task();
+        subTask3.setName("SubTask 3");
+
+        topTask.addSubtask(subTask1);
+        subTask1.addSubtask(subTask2);
+        subTask2.addSubtask(subTask3);
+
+        ArrayList<Task> expectedTasks = new ArrayList<Task>();
+        expectedTasks.add(topTask);
+        expectedTasks.add(subTask1);
+        expectedTasks.add(subTask2);
+        expectedTasks.add(subTask3);
+
+        assertEquals(expectedTasks, topTask.getRecursiveSubtasks());
+    }
+
+    @Test
+    public void testTaskgetRecursiveSubtasksMethodWithMultipleLevelsOfHeirarchy() {
+        Task topTask = new Task();
+        topTask.setName("Top Task");
+        Task subTask1 = new Task();
+        subTask1.setName("SubTask 1");
+        Task subTask1_1 = new Task();
+        subTask1_1.setName("SubTask 1_1");
+        Task subTask1_2 = new Task();
+        subTask1_2.setName("SubTask 1_2");
+        Task subTask2 = new Task();
+        subTask2.setName("SubTask 2");
+        Task subTask2_1 = new Task();
+        subTask2_1.setName("SubTask 2_1");
+        Task subTask2_1_1 = new Task();
+        subTask2_1_1.setName("SubTask 2_1_1");
+        Task subTask3 = new Task();
+        subTask3.setName("SubTask 3");
+        Task subTask3_1 = new Task();
+        subTask3_1.setName("SubTask 3_1");
+        Task subTask3_1_1 = new Task();
+        subTask3_1_1.setName("SubTask 3_1_1");
+        Task subTask3_2 = new Task();
+        subTask3_2.setName("SubTask 3_2");
+
+        topTask.addSubtask(subTask1);
+        subTask1.addSubtask(subTask1_1);
+        subTask1.addSubtask(subTask1_2);
+        topTask.addSubtask(subTask2);
+        subTask2.addSubtask(subTask2_1);
+        subTask2_1.addSubtask(subTask2_1_1);
+        topTask.addSubtask(subTask3);
+        subTask3.addSubtask(subTask3_1);
+        subTask3.addSubtask(subTask3_2);
+        subTask3_1.addSubtask(subTask3_1_1);
+
+        ArrayList<Task> expectedTasks = new ArrayList<Task>();
+        expectedTasks.add(topTask);
+        expectedTasks.add(subTask1);
+        expectedTasks.add(subTask1_1);
+        expectedTasks.add(subTask1_2);
+        expectedTasks.add(subTask2);
+        expectedTasks.add(subTask2_1);
+        expectedTasks.add(subTask2_1_1);
+        expectedTasks.add(subTask3);
+        expectedTasks.add(subTask3_1);
+        expectedTasks.add(subTask3_1_1);
+        expectedTasks.add(subTask3_2);
+
+        assertEquals(expectedTasks, topTask.getRecursiveSubtasks());
     }
 
     public static void main(String args[]) {
