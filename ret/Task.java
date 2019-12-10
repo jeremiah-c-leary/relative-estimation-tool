@@ -55,10 +55,8 @@ public class Task {
 
   public void updateHours(ArrayList<Integer> input) {
       ArrayList<Integer> myTemp = new ArrayList<Integer>();
-      Integer myPercent;
       for (Integer myHour : input) {
-          myPercent = myHour * this.percent / 100;
-          myTemp.add(myPercent);
+          myTemp.add(myHour * this.percent / 100);
       }
       this.hours = myTemp;
   }
