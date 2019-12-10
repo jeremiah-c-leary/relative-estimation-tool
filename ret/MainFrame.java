@@ -28,15 +28,20 @@ public class MainFrame extends JFrame {
         super("Relative Estimation Tool");
         setLayout(new GridBagLayout());
 
-        numHours.add(0);
-        numHours.add(0);
-        numHours.add(0);
+        initializeHours();
 
         paintHeader();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         pack();
+    }
+
+    private void initializeHours() {
+        numHours.add(0);
+        numHours.add(0);
+        numHours.add(0);
+        numHours.add(0);
     }
 
     private void paintHeader() {
@@ -102,13 +107,13 @@ public class MainFrame extends JFrame {
         labelHours.setHorizontalAlignment(JLabel.CENTER);
         labelHours.setPreferredSize(new Dimension(100,row_height));
         gbc.gridheight = 1;
-        gbc.gridwidth = 3;
+        gbc.gridwidth = numHours.size();
         gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         add(labelHours, gbc);
 
-        for(int i=0;i<3;i++) {
+        for(int i=0;i<numHours.size();i++) {
             gbc.gridheight = 1;
             gbc.gridwidth = 1;
             gbc.gridx = i + 3;
