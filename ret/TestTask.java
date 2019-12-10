@@ -14,6 +14,7 @@ public class TestTask {
         assertEquals(Integer.valueOf(0), myTask.getPercent());
         assertEquals(Integer.valueOf(0), myTask.getLevel());
         assertEquals(new ArrayList<Integer>(), myTask.getHours());
+        assertEquals(new ArrayList<Integer>(), myTask.getCalculatedHours());
         assertEquals(new ArrayList<Task>(), myTask.getSubtasks());
     }
 
@@ -70,7 +71,7 @@ public class TestTask {
     }
 
     @Test
-    public void testTaskUpdateHoursMethodWithPercentEqualToZero() {
+    public void testTaskSetHoursMethodWithPercentEqualToZero() {
         Task myTask = new Task();
         ArrayList<Integer> expectedHours = new ArrayList<Integer>();
         expectedHours.add(0);
@@ -80,8 +81,9 @@ public class TestTask {
         inputHours.add(100);
         inputHours.add(200);
         inputHours.add(300);
-        myTask.updateHours(inputHours);
-        assertEquals(expectedHours, myTask.getHours());
+        myTask.setHours(inputHours);
+        assertEquals(inputHours, myTask.getHours());
+        assertEquals(expectedHours, myTask.getCalculatedHours());
 
         assertEquals(Integer.valueOf(0), myTask.getLevel());
         assertEquals("", myTask.getName());
@@ -91,7 +93,7 @@ public class TestTask {
     }
 
     @Test
-    public void testTaskUpdateHoursMethodWithPercentEqualTo33() {
+    public void testTaskSetHoursMethodWithPercentEqualTo33() {
         Task myTask = new Task();
         myTask.setPercent(33);
 
@@ -103,8 +105,9 @@ public class TestTask {
         inputHours.add(100);
         inputHours.add(200);
         inputHours.add(300);
-        myTask.updateHours(inputHours);
-        assertEquals(expectedHours, myTask.getHours());
+        myTask.setHours(inputHours);
+        assertEquals(inputHours, myTask.getHours());
+        assertEquals(expectedHours, myTask.getCalculatedHours());
 
         assertEquals(Integer.valueOf(0), myTask.getLevel());
         assertEquals("", myTask.getName());
@@ -112,8 +115,9 @@ public class TestTask {
         assertEquals(Integer.valueOf(33), myTask.getPercent());
         assertEquals(new ArrayList<Task>(), myTask.getSubtasks());
     }
+
     @Test
-    public void testTaskUpdateHoursMethodWithPercentEqualTo50() {
+    public void testTaskSetHoursMethodWithPercentEqualTo50() {
         Task myTask = new Task();
         myTask.setPercent(50);
 
@@ -125,8 +129,9 @@ public class TestTask {
         inputHours.add(100);
         inputHours.add(200);
         inputHours.add(300);
-        myTask.updateHours(inputHours);
-        assertEquals(expectedHours, myTask.getHours());
+        myTask.setHours(inputHours);
+        assertEquals(inputHours, myTask.getHours());
+        assertEquals(expectedHours, myTask.getCalculatedHours());
 
         assertEquals(Integer.valueOf(0), myTask.getLevel());
         assertEquals("", myTask.getName());
@@ -136,7 +141,7 @@ public class TestTask {
     }
 
     @Test
-    public void testTaskUpdateHoursMethodWithPercentEqualTo100() {
+    public void testTaskSetHoursMethodWithPercentEqualTo100() {
         Task myTask = new Task();
         myTask.setPercent(100);
 
@@ -148,8 +153,9 @@ public class TestTask {
         inputHours.add(100);
         inputHours.add(200);
         inputHours.add(300);
-        myTask.updateHours(inputHours);
-        assertEquals(expectedHours, myTask.getHours());
+        myTask.setHours(inputHours);
+        assertEquals(inputHours, myTask.getHours());
+        assertEquals(expectedHours, myTask.getCalculatedHours());
 
         assertEquals(Integer.valueOf(0), myTask.getLevel());
         assertEquals("", myTask.getName());
@@ -157,7 +163,6 @@ public class TestTask {
         assertEquals(Integer.valueOf(100), myTask.getPercent());
         assertEquals(new ArrayList<Task>(), myTask.getSubtasks());
     }
-
 
     public static void main(String args[]) {
         org.junit.runner.JUnitCore.main("TestTask");

@@ -8,6 +8,7 @@ public class Task {
   private Integer percent;
   private Integer level;
   private ArrayList<Integer> hours = new ArrayList<Integer>();
+  private ArrayList<Integer> calculatedHours = new ArrayList<Integer>();
   private ArrayList<Task> subtasks = new ArrayList<Task>();
 
   public Task() {
@@ -53,12 +54,25 @@ public class Task {
       return new ArrayList<Integer>(this.hours);
   }
 
-  public void updateHours(ArrayList<Integer> input) {
+  public ArrayList<Integer> getCalculatedHours() {
+      return new ArrayList<Integer>(this.calculatedHours);
+  }
+
+  public void setHours(ArrayList<Integer> input) {
       ArrayList<Integer> myTemp = new ArrayList<Integer>();
       for (Integer myHour : input) {
-          myTemp.add(myHour * this.percent / 100);
+          myTemp.add(myHour);
       }
       this.hours = myTemp;
+      this.updateCalculatedHours();
+  }
+
+  private void updateCalculatedHours() {
+      ArrayList<Integer> myTemp = new ArrayList<Integer>();
+      for (Integer myHour : this.hours) {
+          myTemp.add(myHour * this.percent / 100);
+      }
+      this.calculatedHours = myTemp;
   }
 
   public ArrayList<Task> getSubtasks() {
