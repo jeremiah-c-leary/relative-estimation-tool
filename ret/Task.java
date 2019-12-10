@@ -1,17 +1,20 @@
 
+import java.util.ArrayList;
+
 public class Task {
 
   private String name;
   private String description;
   private Integer percent;
   private Integer level;
+  private ArrayList<Integer> hours = new ArrayList<Integer>();
+  private ArrayList<Task> subtasks = new ArrayList<Task>();
 
   public Task() {
       name = "";
       description = "";
       percent = 0;
       level = 0;
-
   }
 
   public String getName() {
@@ -46,4 +49,21 @@ public class Task {
       this.level = input;
   }
 
+  public ArrayList<Integer> getHours() {
+      return new ArrayList<Integer>(this.hours);
+  }
+
+  public void updateHours(ArrayList<Integer> input) {
+      ArrayList<Integer> myTemp = new ArrayList<Integer>();
+      Integer myPercent;
+      for (Integer myHour : input) {
+          myPercent = myHour * this.percent / 100;
+          myTemp.add(myPercent);
+      }
+      this.hours = myTemp;
+  }
+
+  public ArrayList<Task> getSubtasks() {
+      return new ArrayList<Task>(this.subtasks);
+  }
 }
