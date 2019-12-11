@@ -10,8 +10,11 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame 
+                       implements PropertyChangeListener {
 
     private JLabel labelTask;
     private JLabel labelDescription;
@@ -20,8 +23,11 @@ public class MainFrame extends JFrame {
     private static int row_height = 20;
 
     ArrayList<Integer> numHours = new ArrayList<Integer>();
+    ArrayList<HourTextField> fieldsHours = new ArrayList<HourTextField>();
+
     private NumberFormat hourFormat;
-    private JFormattedTextField hourCell;
+//    private JFormattedTextField headerHourField;
+    private HourTextField headerHourField;
 
     private NumberFormat nameFormat;
     private JFormattedTextField nameCell;
@@ -115,6 +121,22 @@ public class MainFrame extends JFrame {
         }
     }
 
+    public void propertyChange(PropertyChangeEvent e) {
+//        System.out.println("Something changed");
+//        for(int i=0;i<numHours.size();i++) {
+//            System.out.println(numHours.get(i));
+//        }
+//        System.out.println(e.getNewValue());
+        for(int i=0;i<fieldsHours.size();i++) {
+            if(e.getSource() == fieldsHours.get(i)) {
+                numHours.set(i, (Integer)e.getNewValue());
+            }
+        }
+ //       for(int i=0;i<numHours.size();i++) {
+ //           System.out.println(numHours.get(i));
+ //       }
+    }
+
 //*****************************************************************************
 // Header methods
 //*****************************************************************************
@@ -194,14 +216,17 @@ public class MainFrame extends JFrame {
             gbc.gridx = i + 3;
             gbc.gridy = 1;
             gbc.fill = GridBagConstraints.NONE;
-            hourCell = new JFormattedTextField(hourFormat);
-            hourCell.setValue(numHours.get(i));
-            hourCell.setColumns(10);
-            hourCell.setBackground(Color.GREEN);
-            hourCell.setPreferredSize(new Dimension(100, row_height));
-            hourCell.setOpaque(true);
-            hourCell.setHorizontalAlignment(JLabel.CENTER);
-            add(hourCell, gbc);
+            headerHourField = new HourTextField(hourFormat, i);
+            headerHourField.setValue(numHours.get(i));
+            headerHourField.setColumns(10);
+            headerHourField.setBackground(Color.GREEN);
+            headerHourField.setPreferredSize(new Dimension(100, row_height));
+            headerHourField.setOpaque(true);
+            headerHourField.setHorizontalAlignment(JLabel.CENTER);
+            headerHourField.addPropertyChangeListener("value", this);
+            fieldsHours.add(headerHourField);
+            System.out.println(headerHourField.getIndex());
+            add(headerHourField, gbc);
         }
     }
 }
